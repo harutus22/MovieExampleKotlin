@@ -8,12 +8,7 @@ import com.example.movieexamplekotlin.model.Movie
 import com.example.movieexamplekotlin.recyclerview.MovieAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), MovieAdapter.OnItemDelete {
-
-    lateinit var adapter:MovieAdapter
-    override fun deleteItem(position: Int) {
-
-    }
+class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +17,8 @@ class MainActivity : AppCompatActivity(), MovieAdapter.OnItemDelete {
     }
 
     private fun createRecycleView() {
-        adapter = MovieAdapter(this)
-        adapter.submitList(createList())
+        val adapter = MovieAdapter()
+        adapter.list.addAll(createList())
         val layoutManager = StaggeredGridLayoutManager(3,
             StaggeredGridLayoutManager.VERTICAL)
         recyclerView.layoutManager = layoutManager
